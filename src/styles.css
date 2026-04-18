@@ -372,12 +372,14 @@ p {
 
 .name-input {
   min-width: 0;
+  flex: 1;
 }
 
 .years-input {
   width: 118px;
   text-align: center;
   font-weight: 700;
+  flex-shrink: 0;
 }
 
 .preset-row {
@@ -926,7 +928,7 @@ p {
   gap: 10px;
 }
 
-/* ── Tablet and up (760px+) ── */
+/* ── Tablet 760px+ ── */
 @media (min-width: 760px) {
   :root {
     --card-gap: 18px;
@@ -953,19 +955,17 @@ p {
     padding: 22px 28px;
   }
 
-  /* 3 players and above → 3 columns */
+  /* 3 columns for 3+ players */
   .player-card {
     flex-basis: calc((100% - (var(--grid-gap) * 2)) / 3);
     max-width: calc((100% - (var(--grid-gap) * 2)) / 3);
   }
 
-  /* 2 players → 2 columns, max 400px each */
   .cards-grid[data-count="2"] .player-card {
     flex-basis: min(400px, calc((100% - var(--grid-gap)) / 2));
     max-width: min(400px, calc((100% - var(--grid-gap)) / 2));
   }
 
-  /* 1 player → centred single card */
   .cards-grid[data-count="1"] .player-card {
     flex-basis: min(420px, 100%);
     max-width: min(420px, 100%);
@@ -990,7 +990,7 @@ p {
   }
 }
 
-/* ── Container query: side-by-side counters when card is wide enough ── */
+/* ── Container query: side-by-side counters ── */
 @container (min-width: 330px) {
   .player-counter-board {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1026,7 +1026,7 @@ p {
   }
 }
 
-/* ── Mobile (up to 640px) ── */
+/* ── Mobile ≤640px ── */
 @media (max-width: 640px) {
   .game-topbar {
     flex-direction: row;
@@ -1050,7 +1050,7 @@ p {
     letter-spacing: 0.04em;
   }
 
-  /* Add-player form on mobile: name + year stacked, then action buttons */
+  /* Add-player form on mobile */
   .inline-player-form {
     grid-template-columns: 1fr;
   }
@@ -1112,7 +1112,7 @@ p {
     font-size: clamp(2.6rem, 11vw, 4rem);
   }
 
-  /* Setup player rows: keep swatch + body side by side but body goes full width */
+  /* Setup player rows */
   .setup-player-swatch {
     width: 44px;
     height: 44px;
@@ -1130,7 +1130,6 @@ p {
     padding: 8px 10px;
   }
 
-  /* Setup years row: label stretches, input right-aligned */
   .setup-years-row {
     flex-wrap: nowrap;
   }
