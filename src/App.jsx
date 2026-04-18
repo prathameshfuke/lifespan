@@ -539,39 +539,43 @@ function App() {
                         Poor 50
                       </button>
                     </div>
-                    <input
-                      ref={addNameInputRef}
-                      className="name-input"
-                      type="text"
-                      value={draftName}
-                      onChange={(event) => setDraftName(event.target.value)}
-                      placeholder="Player name"
-                      maxLength={24}
-                      autoComplete="off"
-                      spellCheck="false"
-                      aria-label="Player name"
-                    />
-                    <input
-                      className="years-input"
-                      type="number"
-                      min="0"
-                      step="1"
-                      inputMode="numeric"
-                      value={draftYears}
-                      onChange={(event) => setDraftYears(event.target.value)}
-                      aria-label="Starting years"
-                    />
-                    <button className="icon-button icon-button--confirm" type="submit" aria-label="Confirm player">
-                      &#10003;
-                    </button>
-                    <button
-                      className="icon-button"
-                      type="button"
-                      onClick={closeAddPlayerForm}
-                      aria-label="Cancel adding player"
-                    >
-                      x
-                    </button>
+                    <div className="inline-form-inputs">
+                      <input
+                        ref={addNameInputRef}
+                        className="name-input"
+                        type="text"
+                        value={draftName}
+                        onChange={(event) => setDraftName(event.target.value)}
+                        placeholder="Player name"
+                        maxLength={24}
+                        autoComplete="off"
+                        spellCheck="false"
+                        aria-label="Player name"
+                      />
+                      <input
+                        className="years-input"
+                        type="number"
+                        min="0"
+                        step="1"
+                        inputMode="numeric"
+                        value={draftYears}
+                        onChange={(event) => setDraftYears(event.target.value)}
+                        aria-label="Starting years"
+                      />
+                    </div>
+                    <div className="inline-form-actions">
+                      <button className="icon-button icon-button--confirm" type="submit" aria-label="Confirm player">
+                        &#10003;
+                      </button>
+                      <button
+                        className="icon-button"
+                        type="button"
+                        onClick={closeAddPlayerForm}
+                        aria-label="Cancel adding player"
+                      >
+                        x
+                      </button>
+                    </div>
                   </form>
                 )}
 

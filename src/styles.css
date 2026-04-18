@@ -237,7 +237,7 @@ p {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 14px;
-  align-items: center;
+  align-items: start;
   animation: row-in 280ms ease both;
   animation-delay: calc(var(--row-delay) * 60ms);
 }
@@ -260,18 +260,25 @@ p {
   gap: 10px;
 }
 
-.setup-player-top,
+.setup-player-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .setup-years-row {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
   flex-wrap: wrap;
 }
 
 .setup-name-field {
   min-width: 0;
-  flex: 1 1 220px;
+  flex: 1 1 160px;
   display: grid;
   gap: 8px;
 }
@@ -332,12 +339,27 @@ p {
 
 .inline-player-form {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 10px;
   padding: 14px;
   background: var(--champagne);
   border-radius: var(--radius-lg);
   animation: row-in 220ms ease both;
+}
+
+.inline-form-inputs {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.inline-form-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  grid-column: 1 / -1;
 }
 
 .name-input,
@@ -490,7 +512,7 @@ p {
 
 .game-screen {
   min-height: 100dvh;
-  padding-bottom: 152px;
+  padding-bottom: 160px;
 }
 
 .game-topbar,
@@ -502,11 +524,11 @@ p {
 }
 
 .game-topbar {
-  padding: 20px 18px 14px;
+  padding: 14px 14px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
@@ -519,7 +541,7 @@ p {
 .topbar-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
 .turn-banner {
@@ -595,9 +617,9 @@ p {
 
 .player-card {
   width: 100%;
-  flex: 1 1 calc((100% - var(--grid-gap)) / 2);
-  max-width: calc((100% - var(--grid-gap)) / 2);
-  min-height: 320px;
+  flex: 1 1 100%;
+  max-width: 100%;
+  min-height: 300px;
   background: var(--card-bg);
   color: var(--card-fg);
   border: 3px solid var(--card-bg);
@@ -662,10 +684,12 @@ p {
 }
 
 .player-name {
-  font-size: 1rem;
+  font-size: clamp(0.85rem, 3.5vw, 1rem);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  word-break: break-word;
+  min-width: 0;
 }
 
 .player-status {
@@ -902,6 +926,7 @@ p {
   gap: 10px;
 }
 
+/* ── Tablet and up (760px+) ── */
 @media (min-width: 760px) {
   :root {
     --card-gap: 18px;
@@ -913,6 +938,7 @@ p {
 
   .game-topbar {
     padding: 22px 28px 14px;
+    gap: 12px;
   }
 
   .turn-banner-content {
@@ -927,16 +953,19 @@ p {
     padding: 22px 28px;
   }
 
+  /* 3 players and above → 3 columns */
   .player-card {
     flex-basis: calc((100% - (var(--grid-gap) * 2)) / 3);
     max-width: calc((100% - (var(--grid-gap) * 2)) / 3);
   }
 
+  /* 2 players → 2 columns, max 400px each */
   .cards-grid[data-count="2"] .player-card {
     flex-basis: min(400px, calc((100% - var(--grid-gap)) / 2));
     max-width: min(400px, calc((100% - var(--grid-gap)) / 2));
   }
 
+  /* 1 player → centred single card */
   .cards-grid[data-count="1"] .player-card {
     flex-basis: min(420px, 100%);
     max-width: min(420px, 100%);
@@ -945,8 +974,23 @@ p {
   .modal-actions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .inline-player-form {
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
+  }
+
+  .inline-form-inputs {
+    grid-column: unset;
+    flex-wrap: nowrap;
+  }
+
+  .inline-form-actions {
+    grid-column: unset;
+    flex-wrap: nowrap;
+  }
 }
 
+/* ── Container query: side-by-side counters when card is wide enough ── */
 @container (min-width: 330px) {
   .player-counter-board {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -982,32 +1026,143 @@ p {
   }
 }
 
+/* ── Mobile (up to 640px) ── */
 @media (max-width: 640px) {
+  .game-topbar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 12px 14px 8px;
+  }
+
+  .game-title {
+    font-size: clamp(1.3rem, 6vw, 1.8rem);
+  }
+
+  .topbar-actions {
+    gap: 6px;
+  }
+
+  /* Shrink topbar buttons on mobile */
+  .topbar-actions .outline-button {
+    min-height: 44px;
+    padding: 10px 14px;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* Add-player form on mobile: name + year stacked, then action buttons */
   .inline-player-form {
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: 1fr;
+  }
+
+  .inline-form-inputs {
+    grid-column: 1 / -1;
+    flex-direction: column;
   }
 
   .years-input {
     width: 100%;
   }
 
+  .name-input {
+    width: 100%;
+  }
+
+  .inline-form-actions {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+  }
+
   .game-summary {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 12px 14px 0;
+  }
+
+  .summary-pill {
+    min-height: 64px;
+    padding: 10px 10px;
+  }
+
+  .summary-pill strong {
+    font-size: clamp(1rem, 4vw, 1.2rem);
   }
 
   .poster-shape--indigo {
-    width: 110px;
-    height: 200px;
-    top: -50px;
-    right: -30px;
+    width: 90px;
+    height: 180px;
+    top: -45px;
+    right: -25px;
+  }
+
+  .poster-shape--pink {
+    width: 90px;
+    height: 190px;
+  }
+
+  .poster-shape--xanthous {
+    width: 90px;
+    height: 170px;
   }
 
   .setup-hero {
-    padding-right: 80px;
+    padding-right: 70px;
   }
 
   .wordmark {
     font-size: clamp(2.6rem, 11vw, 4rem);
+  }
+
+  /* Setup player rows: keep swatch + body side by side but body goes full width */
+  .setup-player-swatch {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+  }
+
+  .setup-name-input {
+    min-height: 44px;
+    padding: 8px 12px;
+  }
+
+  .setup-years-input {
+    min-height: 44px;
+    padding: 8px 10px;
+  }
+
+  /* Setup years row: label stretches, input right-aligned */
+  .setup-years-row {
+    flex-wrap: nowrap;
+  }
+
+  /* Game screen: single column cards */
+  .cards-wrap {
+    padding: 12px 14px;
+  }
+
+  .player-card {
+    flex-basis: 100%;
+    max-width: 100%;
+    min-height: 260px;
+    padding: 14px;
+  }
+
+  /* Turn banner tighter on mobile */
+  .turn-banner-content {
+    padding: 16px 14px 20px;
+  }
+
+  .turn-player-name {
+    font-size: clamp(1.8rem, 8vw, 3rem);
+  }
+
+  /* Footer */
+  .turn-footer {
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+  }
+
+  .footer-button {
+    min-height: 52px;
   }
 }
 
