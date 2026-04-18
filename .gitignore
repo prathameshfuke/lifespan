@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Vite
+*.local
+.vite-dev.*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Editor & tool directories
+.claude/
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test / scratch
+puppeteer-test.mjs
