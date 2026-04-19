@@ -548,8 +548,8 @@ p {
 
 .turn-banner {
   width: 100%;
-  background: var(--turn-color);
-  color: var(--white);
+  background: var(--turn-bg);
+  color: var(--turn-fg);
   position: relative;
   overflow: hidden;
   border-block: 3px solid var(--ink);
@@ -558,7 +558,7 @@ p {
 .turn-banner-track {
   position: absolute;
   inset: 12px;
-  border: 3px solid var(--white);
+  border: 3px solid var(--turn-fg);
   border-radius: 28px;
   animation: pulse-outline 1700ms ease infinite;
 }
@@ -650,16 +650,7 @@ p {
   filter: grayscale(0);
 }
 
-.player-card::after {
-  content: "";
-  position: absolute;
-  inset: auto -34px -34px auto;
-  width: 92px;
-  height: 92px;
-  border-radius: 999px;
-  border: 3px solid currentColor;
-  transform: rotate(18deg);
-}
+
 
 .player-card--inactive:not(.player-card--eliminated) .control-button,
 .player-card--inactive:not(.player-card--eliminated) .counter-module,
@@ -709,7 +700,7 @@ p {
 
 .player-status--active {
   background: var(--white);
-  color: var(--card-button);
+  color: var(--ink);
   border-color: var(--white);
 }
 
@@ -743,10 +734,11 @@ p {
 }
 
 .counter-display-shell {
-  border: 3px solid var(--card-fg);
+  border: 3px solid var(--white);
   border-radius: 26px;
   background: var(--ink);
   padding: 12px;
+  color: var(--white);
 }
 
 .counter-display-window {
@@ -763,7 +755,7 @@ p {
   position: relative;
   min-height: 96px;
   background: var(--ink);
-  border: 3px solid var(--card-fg);
+  border: 3px solid var(--white);
   border-radius: 14px;
   display: grid;
   place-items: center;
@@ -781,7 +773,7 @@ p {
   top: 50%;
   height: 3px;
   margin-top: -1.5px;
-  background: var(--card-fg);
+  background: var(--white);
   z-index: 2;
 }
 

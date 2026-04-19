@@ -614,12 +614,15 @@ function App() {
 
           <section
             className="turn-banner"
-            style={{ "--turn-color": turnColor.background }}
+            style={{
+              "--turn-bg": turnColor.background,
+              "--turn-fg": turnColor.foreground
+            }}
             aria-live="polite"
           >
             <div className="turn-banner-track" aria-hidden="true" />
             <div className="turn-banner-content">
-              <span className="eyebrow white-text">Turn</span>
+              <span className="eyebrow">Turn</span>
               <h2 className="turn-player-name">{currentPlayer?.name ?? "-"}</h2>
             </div>
           </section>
