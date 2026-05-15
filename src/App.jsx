@@ -2,11 +2,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useGameAudio } from "./audio.js";
 
 const PLAYER_COLORS = [
-  { background: "#5c30ff", foreground: "#ffffff" },
-  { background: "#e63c23", foreground: "#ffffff" },
-  { background: "#f791c3", foreground: "#111111" },
-  { background: "#f6bc3f", foreground: "#111111" },
-  { background: "#008c47", foreground: "#ffffff" }
+  { background: "#333695", foreground: "#ffffff" },
+  { background: "#ed1b31", foreground: "#ffffff" },
+  { background: "#ea509c", foreground: "#ffffff" },
+  { background: "#fed400", foreground: "#111111" },
+  { background: "#05a257", foreground: "#ffffff" }
 ];
 
 const DEFAULT_YEARS = 80;
@@ -320,11 +320,7 @@ function App() {
       };
     });
 
-    if (delta > 0) {
-      playSound("add");
-    } else {
-      playSound("subtract");
-    }
+    playSound("click");
   }
 
   function advanceTurn() {
@@ -406,7 +402,9 @@ function App() {
         <main className="screen setup-screen">
           <div className="setup-frame">
             <header className="setup-hero">
-              <h1 className="wordmark">LifeSpan</h1>
+              <h1 className="wordmark">
+                <img src="/logo.png" alt="LifeSpan Logo" style={{ height: "400px", maxWidth: "100%", objectFit: "contain", display: "block", margin: "0 auto" }} />
+              </h1>
             </header>
 
             <section className="setup-note">
@@ -596,7 +594,9 @@ function App() {
       {screen === "game" && gameState && (
         <main className="screen game-screen">
           <header className="game-topbar">
-            <div className="game-title">LifeSpan</div>
+            <div className="game-title">
+              <img src="/logo.png" alt="LifeSpan Logo" style={{ height: "100px", objectFit: "contain", display: "block" }} />
+            </div>
             <div className="topbar-actions">
               <button
                 className="outline-button indigo-outline"

@@ -71,8 +71,8 @@ export function useGameAudio() {
       type: "square",
       startFrequency: 1260,
       endFrequency: 760,
-      duration: 0.028,
-      gain: 0.018
+      duration: 0.035,
+      gain: 0.05
     });
   }
 

@@ -9,14 +9,14 @@
 }
 
 :root {
-  --electric-indigo: #5c30ff;
-  --chilli-red: #e63c23;
-  --persian-pink: #f791c3;
-  --xanthous: #f6bc3f;
-  --sea-green: #008c47;
-  --champagne: #ffe8ce;
-  --white: #ffffff;
-  --ink: #111111;
+  --electric-indigo: #333695;
+  --chilli-red: #ed1b31;
+  --persian-pink: #ea509c;
+  --xanthous: #fed400;
+  --sea-green: #05a257;
+  --champagne: #000000;
+  --white: #111111;
+  --ink: #ffffff;
   --shell-width: 1200px;
   --radius-xl: 30px;
   --radius-lg: 24px;
@@ -404,19 +404,23 @@ p {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
+  box-shadow: 0 4px 0 rgba(255, 255, 255, 0.25);
   transition:
     transform 140ms ease,
     background-color 140ms ease,
     color 140ms ease,
-    border-color 140ms ease;
+    border-color 140ms ease,
+    box-shadow 140ms ease;
 }
 
 .preset-chip:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 rgba(255, 255, 255, 0.25);
 }
 
 .preset-chip:active {
-  transform: translateY(1px);
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(255, 255, 255, 0.25);
 }
 
 .pill-button,
@@ -426,11 +430,13 @@ p {
 .control-button,
 .reset-card-button {
   cursor: pointer;
+  box-shadow: 0 4px 0 rgba(255, 255, 255, 0.25);
   transition:
     transform 140ms ease,
     background-color 140ms ease,
     color 140ms ease,
-    border-color 140ms ease;
+    border-color 140ms ease,
+    box-shadow 140ms ease;
 }
 
 .pill-button,
@@ -451,6 +457,7 @@ p {
 .icon-button:hover,
 .control-button:hover {
   transform: translateY(-2px);
+  box-shadow: 0 6px 0 rgba(255, 255, 255, 0.25);
 }
 
 .pill-button:active,
@@ -459,6 +466,7 @@ p {
 .icon-button:active,
 .control-button:active {
   transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(255, 255, 255, 0.25);
 }
 
 .sea-button {
