@@ -242,6 +242,22 @@ p {
   align-items: start;
   animation: row-in 280ms ease both;
   animation-delay: calc(var(--row-delay) * 60ms);
+  border-color: var(--swatch-bg) !important;
+}
+
+.setup-player-row .setup-name-input,
+.setup-player-row .setup-years-input {
+  border-color: var(--swatch-bg);
+}
+
+.setup-player-row .preset-chip {
+  border-color: var(--swatch-bg);
+  color: var(--swatch-bg);
+}
+
+.setup-player-row .row-remove-button {
+  border-color: var(--chilli-red);
+  color: var(--chilli-red);
 }
 
 .setup-player-swatch {
