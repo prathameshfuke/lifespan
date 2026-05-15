@@ -72,7 +72,9 @@ p {
   min-height: 100dvh;
   position: relative;
   overflow: hidden;
-  background: var(--champagne);
+  background-color: var(--champagne);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 2px, transparent 2px);
+  background-size: 24px 24px;
 }
 
 .poster-shape {

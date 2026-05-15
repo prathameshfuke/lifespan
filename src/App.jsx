@@ -394,9 +394,6 @@ function App() {
 
   return (
     <div className="app-shell">
-      <div className="poster-shape poster-shape--indigo" aria-hidden="true" />
-      <div className="poster-shape poster-shape--pink" aria-hidden="true" />
-      <div className="poster-shape poster-shape--xanthous" aria-hidden="true" />
 
       {screen === "setup" && (
         <main className="screen setup-screen">
